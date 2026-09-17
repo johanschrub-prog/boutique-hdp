@@ -124,11 +124,13 @@ Code : ${item.code}
 class="qtyInput"
 id="qty_${item.code}"
 type="number"
+enterkeyhint="go"
 value="${
 item.quantite === 0
 ? ""
 : item.quantite
-}">
+}"
+onkeydown="if(event.key==='Enter'){valider('${item.code}');}">
 
 <button
 onclick="valider('${item.code}')">
