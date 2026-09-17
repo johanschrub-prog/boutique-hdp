@@ -29,9 +29,41 @@ document
 .getElementById("search")
 .value
 .toLowerCase();
+const titre =
+document.getElementById("titreApp");
+
+const toolbar =
+document.getElementById("toolbarActions");
 
 let html = "";
+if(search.trim() !== ""){
 
+    titre.style.display = "none";
+
+    toolbar.querySelectorAll("button")
+    .forEach(btn => {
+
+        if(
+            !btn.textContent.includes("Ajouter")
+        ){
+            btn.style.display = "none";
+        }
+
+    });
+
+}
+else{
+
+    titre.style.display = "";
+
+    toolbar.querySelectorAll("button")
+    .forEach(btn => {
+
+        btn.style.display = "";
+
+    });
+
+}
 if(modeResume){
 
 const articles =
