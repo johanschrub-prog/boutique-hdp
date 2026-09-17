@@ -120,7 +120,7 @@ Code : ${item.code}
 
 <input
 class="qtyInput"
-id="qty_${index}"
+id="qty_${item.code}"
 type="number"
 value="${
 item.quantite === 0
