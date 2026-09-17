@@ -164,12 +164,22 @@ function valider(code){
     ? 0
     : parseInt(input.value) || 0;
 
-    save();
+  save();
 
-    document.getElementById("search").value = "";
+render();
 
-    render();
+setTimeout(() => {
 
+    const recherche =
+    document.getElementById("search");
+
+    recherche.value = "";
+
+    recherche.focus();
+
+    recherche.select();
+
+}, 50);
 }
 
 function toggleCheck(code){
