@@ -83,12 +83,14 @@ type="checkbox"
 ${item.coche ? "checked" : ""}
 onchange="toggleCheck('${item.code}')">
 
-${item.article}
+<strong>${item.code}</strong> - ${item.article}
 
 </label>
 
-<div>
-Quantité : ${item.quantite}
+<div style="margin-top:8px">
+
+Quantité : <strong>${item.quantite}</strong>
+
 </div>
 
 </div>
