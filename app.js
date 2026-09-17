@@ -81,7 +81,7 @@ html += `
 <input
 type="checkbox"
 ${item.coche ? "checked" : ""}
-onchange="toggleCheck(${index})">
+onchange="toggleCheck('${item.code}')">
 
 ${item.article}
 
@@ -129,8 +129,7 @@ item.quantite === 0
 }">
 
 <button
-onclick="valider('${item.code}')"
-
+onclick="valider('${item.code}')">
 OK
 </button>
 
@@ -173,17 +172,23 @@ function valider(code){
 
 }
 
-function toggleCheck(index){
+function toggleCheck(code){
 
-data[index].coche =
-!data[index].coche;
+    const article =
+    data.find(
+        a => String(a.code) === String(code)
+    );
 
-save();
+    if(!article) return;
 
-render();
+    article.coche =
+    !article.coche;
+
+    save();
+
+    render();
 
 }
-
 function addArticle(){
 
 const code =
