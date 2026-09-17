@@ -129,7 +129,8 @@ item.quantite === 0
 }">
 
 <button
-onclick="valider(${index})">
+onclick="valider('${item.code}')"
+
 OK
 </button>
 
@@ -145,25 +146,30 @@ document.getElementById("cards")
 
 }
 
-function valider(index){
+function valider(code){
 
-const valeur =
-document.getElementById(
-"qty_" + index
-).value;
+    const article =
+    data.find(
+        a => String(a.code) === String(code)
+    );
 
-data[index].quantite =
-valeur === ""
-? 0
-: parseInt(valeur);
+    if(!article) return;
 
-save();
+    const input =
+    document.getElementById(
+        "qty_" + code
+    );
 
-document.getElementById(
-"search"
-).value = "";
+    article.quantite =
+    input.value === ""
+    ? 0
+    : parseInt(input.value) || 0;
 
-render();
+    save();
+
+    document.getElementById("search").value = "";
+
+    render();
 
 }
 
