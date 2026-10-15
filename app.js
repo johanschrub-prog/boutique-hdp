@@ -120,6 +120,7 @@ onclick="validerVentes()">
 `;
 
 }
+    }
 else{
 
 data
