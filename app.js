@@ -72,25 +72,7 @@ a => Number(a.quantite) > 0
 );
 
 articles.forEach((item,index)=>{
-html += `
 
-<div class="card">
-
-<button
-style="
-width:100%;
-font-size:18px;
-padding:12px;
-"
-onclick="validerVentes()">
-
-✅ Valider les ventes
-
-</button>
-
-</div>
-
-`;
 html += `
 <div class="card ${item.coche ? 'resumeOk' : ''}">
 
@@ -115,6 +97,27 @@ Quantité : <strong>${item.quantite}</strong>
 `;
 
 });
+if(articles.length > 0){
+
+html += `
+
+<div class="card">
+
+<button
+style="
+width:100%;
+font-size:18px;
+padding:12px;
+"
+onclick="validerVentes()">
+
+✅ Valider les ventes
+
+</button>
+
+</div>
+
+`;
 
 }
 else{
