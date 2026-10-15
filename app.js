@@ -72,7 +72,25 @@ a => Number(a.quantite) > 0
 );
 
 articles.forEach((item,index)=>{
+html += `
 
+<div class="card">
+
+<button
+style="
+width:100%;
+font-size:18px;
+padding:12px;
+"
+onclick="validerVentes()">
+
+✅ Valider les ventes
+
+</button>
+
+</div>
+
+`;
 html += `
 <div class="card ${item.coche ? 'resumeOk' : ''}">
 
@@ -348,6 +366,87 @@ data.length +
 };
 
 reader.readAsArrayBuffer(file);
+
+}
+function validerVentes(){
+
+    const ventes =
+
+    data.filter(
+        a => Number(a.quantite) > 0
+    );
+
+    if(ventes.length === 0){
+
+        alert(
+            "Aucune vente à valider"
+        );
+
+        return;
+
+    }
+
+    if(
+        !confirm(
+            "Valider les ventes ?"
+        )
+    ){
+        return;
+    }
+
+    const mouvements =
+    JSON.parse(
+        localStorage.getItem(
+            "ventesBoutique"
+        )
+    ) || [];
+
+    ventes.forEach(article => {
+
+        mouvements.push({
+
+            date:
+            new Date()
+            .toLocaleString(),
+
+            code:
+            article.code,
+
+            article:
+            article.article,
+
+            quantite:
+            article.quantite
+
+        });
+
+    });
+
+    localStorage.setItem(
+
+        "ventesBoutique",
+
+        JSON.stringify(
+            mouvements
+        )
+
+    );
+
+    data.forEach(article => {
+
+        article.quantite = 0;
+
+        article.coche = false;
+
+    });
+
+    save();
+
+    render();
+
+    alert(
+        "Ventes enregistrées ✅"
+    );
 
 }
 
